@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>CONTATOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #3e7cda;">
+  <ion-card>
+    <ion-card-content>
+      <ion-button *ngIf="!showForm" expand="block" shape="round" (click)="toggleForm(true)">
+        Adicionar Contato
+      </ion-button>
+
+      <div *ngIf="showForm">
+        <ion-item style="margin-bottom: 15px;">
+          <ion-input
+            [(ngModel)]="codigoEmparelhamento"
+            label="Código Emparelhamento"
+            labelPlacement="floating"
+            placeholder="Insira código do amigo"
+          ></ion-input>
+        </ion-item>
+        <div style="display: flex; gap: 10px;">
+          <ion-button expand="block" shape="round" color="medium" (click)="toggleForm(false)" style="flex: 1;">
+            Voltar
+          </ion-button>
+          <ion-button expand="block" shape="round" color="success" (click)="adicionarAmigo()" style="flex: 1;">
+            Adicionar
+          </ion-button>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Contatos Adicionados</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let amigo of amigos">
+              <td>{{ amigo.login }}</td>
+              <td>
+                <ion-button size="small" fill="outline" color="primary" (click)="enviarEmail(amigo)">
+                  <img src="assets/icon/enviar-correio.png" style="width: 20px; height: 20px;" />
+                </ion-button>
+                <ion-button size="small" fill="outline" color="danger" (click)="removerAmigo(amigo.chaveEmparelhamento)">
+                  <img src="assets/icon/excluir.png" style="width: 20px; height: 20px;" />
+                </ion-button>
+              </td>
+            </tr>
+            <tr *ngIf="amigos.length === 0">
+              <td colspan="2" style="text-align:center; color: gray;">Nenhum amigo adicionado.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

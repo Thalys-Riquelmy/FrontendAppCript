@@ -1,0 +1,37 @@
+<ion-content class="ion-padding login-page">
+  <div class="login-container">
+    <ion-card class="login-card">
+      <ion-card-header>
+        <ion-card-title>Login</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-input
+            [(ngModel)]="loginData.login"
+            label="Usuário"
+            labelPlacement="floating"
+            placeholder="Insira seu usuário">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            [(ngModel)]="loginData.senha"
+            type="password"
+            labelPlacement="floating"
+            label="Senha">
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          </ion-input>
+        </ion-item>
+
+        <ion-button (click)="login()" expand="block" shape="round">Entrar</ion-button>
+
+        <div class="register-link">
+          <p>Não tem conta? <a (click)="goToRegister()" style="cursor:pointer;">Cadastre-se</a></p>
+        </div>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

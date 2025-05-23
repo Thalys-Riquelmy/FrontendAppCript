@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>DESCRIPTOGRAFAR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #3e7cda;">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Importar Arquivo Criptografado</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <input type="file" hidden #fileInput (change)="onFileSelected($event)" />
+      <ion-button expand="block" shape="round" (click)="fileInput.click()">
+        Selecionar Arquivo
+      </ion-button>
+      <div *ngIf="fileName">
+        Arquivo selecionado: <strong>{{ fileName }}</strong>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Importar Chave de Segurança</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <input type="file" hidden #fileInput (change)="onFileSelected($event)" />
+      <ion-button expand="block" shape="round" (click)="fileInput.click()">
+        Selecionar Chave
+      </ion-button>
+      <div *ngIf="fileName">
+        Arquivo selecionado: <strong>{{ fileName }}</strong>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

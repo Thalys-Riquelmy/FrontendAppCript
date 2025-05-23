@@ -1,0 +1,37 @@
+<ion-content class="ion-padding register-page">
+  <div class="register-container">
+    <ion-card class="register-card">
+      <ion-card-header>
+        <ion-card-title>Cadastro</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-input [(ngModel)]="registerData.login" label="Usuário" labelPlacement="floating" placeholder="Insira usuário"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="registerData.email" label="E-mail" labelPlacement="floating" placeholder="Insira e-mail"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="registerData.senha" type="password" labelPlacement="floating" label="Senha">
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="confirmarSenha" type="password" labelPlacement="floating" label="Confirmar Senha">
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          </ion-input>
+        </ion-item>
+
+        <ion-button expand="block" class="register-button" shape="round" (click)="register()">Cadastrar</ion-button>
+
+        <div class="login-link">
+          <p>Já tem conta? <a (click)="goToLogin()" style="cursor:pointer;">Entrar</a></p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

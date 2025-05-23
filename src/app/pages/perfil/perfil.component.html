@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>PERFIL</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #da8c3e;">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Dados Pessoais</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-input 
+          label="Usuário" 
+          labelPlacement="floating" 
+          [value]="usuario.login" 
+          readonly>
+        </ion-input> 
+      </ion-item>
+      <ion-item>
+        <ion-input 
+          label="E-mail" 
+          labelPlacement="floating" 
+          [value]="usuario.email" 
+          readonly>
+        </ion-input> 
+      </ion-item>
+      <ion-item style="margin-bottom: 30px;">
+        <ion-input 
+          label="Chave Emparelhamento" 
+          labelPlacement="floating" 
+          [value]="usuario.chaveEmparelhamento" 
+          readonly>
+        </ion-input> 
+      </ion-item>
+
+      <ion-button expand="block" size="medium" shape="round" (click)="alterarSenha()">Alterar Senha</ion-button>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
