@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonContent, IonHeader,IonTitle, IonToolbar, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonCard } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonCard } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CryptoService } from '../../services/Crypto.service'; // Ajuste o caminho conforme
+import { CryptoService } from '../../services/crypto.service';
 
 @Component({
   selector: 'app-descriptografar',
@@ -35,24 +35,23 @@ export class DescriptografarComponent {
   }
 
   decrypt() {
-  if (!this.encryptedFile || !this.keyFile) {
-    console.error("Arquivo criptografado e/ou chave não foram selecionados!");
-    return;
-  }
+    if (!this.encryptedFile || !this.keyFile) {
+      console.error("Arquivo criptografado e/ou chave não foram selecionados!");
+      return;
+    }
 
-  this.cryptoService.decryptFile(this.encryptedFile, this.keyFile).subscribe({
-    next: (blob) => {
-      this.downloadFile(blob, this.encryptedFileName!.replace('.encrypted', ''));
+    this.cryptoService.decryptFile(this.encryptedFile, this.keyFile).subscribe({
+      next: (blob: Blob) => {  // Tipo explicitado
+        this.downloadFile(blob, this.encryptedFileName!.replace('.encrypted', ''));
 
-      // Limpa os arquivos e nomes para resetar os campos
-      this.encryptedFile = null;
-      this.keyFile = null;
-      this.encryptedFileName = null;
-      this.keyFileName = null;
+        this.encryptedFile = null;
+        this.keyFile = null;
+        this.encryptedFileName = null;
+        this.keyFileName = null;
 
-      console.log('Arquivo descriptografado com sucesso!');
-    },
-      error: (err) => {
+        console.log('Arquivo descriptografado com sucesso!');
+      },
+      error: (err: any) => {  // Tipo explicitado
         console.error('Erro ao descriptografar:', err);
       }
     });
@@ -66,5 +65,4 @@ export class DescriptografarComponent {
     a.click();
     window.URL.revokeObjectURL(url);
   }
-
 }

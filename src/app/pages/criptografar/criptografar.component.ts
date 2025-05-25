@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonContent, IonHeader,IonTitle, IonToolbar, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonCard } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonCard } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CryptoService } from '../../services/Crypto.service'; // ajuste o path conforme sua estrutura
+import { CryptoService } from '../../services/crypto.service';
 
 @Component({
   selector: 'app-criptografar',
@@ -31,21 +31,19 @@ export class CriptografarComponent {
       return;
     }
 
-    // Opcional: você pode trocar o algoritmo aqui ou deixar fixo "AES"
     const algorithm = 'AES';
 
     this.cryptoService.encryptFile(this.selectedFile, algorithm).subscribe({
-      next: (blob) => {
+      next: (blob: Blob) => {  // Aqui o tipo explicitado
         this.downloadFile(blob, `${this.selectedFile!.name}.zip`);
         console.log('Arquivo criptografado com sucesso!');
       },
-      error: (err) => {
+      error: (err: any) => {  // Aqui o tipo explicitado
         console.error('Erro ao criptografar:', err);
       }
     });
   }
 
-  // Método para baixar o arquivo blob recebido
   private downloadFile(blob: Blob, filename: string) {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -54,5 +52,4 @@ export class CriptografarComponent {
     a.click();
     window.URL.revokeObjectURL(url);
   }
-
 }
