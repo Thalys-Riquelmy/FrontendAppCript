@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CryptoService {
-  private baseUrl = 'http://localhost:5000'; // URL do backend Flask
+  private baseUrl = 'https://api-criptografia-latest.onrender.com'; // URL do backend Flask
 
   constructor(private http: HttpClient) {}
 
