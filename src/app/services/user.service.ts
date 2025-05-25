@@ -5,7 +5,7 @@ import { EmparelhamentoDTO } from '../models/user.dto';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private api = 'http://localhost:8080/usuarios'; // ajuste conforme o backend
+  private api = 'https://routepro-latest.onrender.com/usuarios'; // ajuste conforme o backend
 
   constructor(private http: HttpClient) {}
 

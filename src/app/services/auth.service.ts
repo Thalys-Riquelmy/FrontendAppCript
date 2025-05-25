@@ -6,7 +6,8 @@ import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private api = 'http://localhost:8080/auth'; // ajuste conforme seu backend
+  /*private api = 'http://localhost:8080/auth'; */
+  private api = 'https://routepro-latest.onrender.com/auth'; 
   private tokenKey = 'auth_token';
 
   constructor(private http: HttpClient) {}

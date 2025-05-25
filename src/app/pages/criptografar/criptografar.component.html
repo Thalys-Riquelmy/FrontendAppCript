@@ -7,7 +7,7 @@
 <ion-content style="--background: #3e7cda;">
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Importar Arquivo</ion-card-title>
+      <ion-card-title>Exportar Arquivo</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <input type="file" hidden #fileInput (change)="onFileSelected($event)" />
@@ -17,6 +17,9 @@
       <div *ngIf="fileName">
         Arquivo selecionado: <strong>{{ fileName }}</strong>
       </div>
+      <ion-button expand="block" color="success" shape="round" [disabled]="!selectedFile" (click)="encrypt()">
+        Criptografar Arquivo
+      </ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>
